@@ -1,10 +1,9 @@
-// DataTablePage.js
-// import React, { useState } from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 import AddRowForm from './AddRowForm';
 import DataTable from './DataTable';
+import useTableWithPagination from '../Table/useTableWithPagination';
 import Pagination from "./Pagination "
-import useTableWithPagination from "../Table/useTableWithPagination";
 
 const DataTablePage = () => {
   const {
@@ -34,12 +33,24 @@ const DataTablePage = () => {
 
   const [isFormVisible, setIsFormVisible] = useState(false);
 
+  // Fetch data from MongoDB (GET request)
+  useEffect(() => {
+    axios
+      .get('http://localhost:5000/users') // MongoDB Atlas API URL
+      .then((response) => {
+        setData(response.data); // MongoDB থেকে ডেটা ফেচ
+      })
+      .catch((error) => {
+        console.error('There was an error fetching data!', error);
+      });
+  }, []);
+
   const handleNewRowChange = (field, value) => {
     setNewRow((prevState) => ({ ...prevState, [field]: value }));
   };
 
   const handleAddNewRow = () => {
-    handleAddRow(newRow);
+    handleAddRow(newRow); // Add new row to the state and MongoDB
     setNewRow({ id: data.length + 1, name: '', age: '', dob: '', gender: 'Male' });
     setIsFormVisible(false);
   };
