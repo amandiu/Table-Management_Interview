@@ -40,6 +40,10 @@ const useTableWithPagination = () => {
     setEditItem(null);  // Reset editing
   };
 
+  const handleAddRow = (newRow) => {
+    setData((prevData) => [...prevData, newRow]); // Add the new row to the existing data
+  };
+
 
   return {
     data,
@@ -55,6 +59,7 @@ const useTableWithPagination = () => {
     handleSave,
     handleChange,
     handleCancel,
+    handleAddRow
   };
 };
 

@@ -1,18 +1,12 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import DataTable from './Table/DataTable'
-import TableWithPagination from './Table/useTableWithPagination'
+import "./App.css";
+import DataTablePage from "./Components/DataTablePage";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <DataTable/> 
+      <DataTablePage />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
