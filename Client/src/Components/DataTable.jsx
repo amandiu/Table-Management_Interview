@@ -64,7 +64,7 @@ const DataTable = ({
                   className="border p-1"
                 />
               ) : (
-                item.dob
+                new Date(item.dob).toDateString()
               )}
             </td>
             <td className="border border-gray-300 p-2">

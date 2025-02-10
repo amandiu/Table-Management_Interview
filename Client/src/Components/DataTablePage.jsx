@@ -24,7 +24,6 @@ const DataTablePage = () => {
   } = useTableWithPagination();
 
   const [newRow, setNewRow] = useState({
-    id: data.length + 1,
     name: '',
     age: '',
     dob: '',
@@ -33,17 +32,7 @@ const DataTablePage = () => {
 
   const [isFormVisible, setIsFormVisible] = useState(false);
 
-  // Fetch data from MongoDB (GET request)
-  useEffect(() => {
-    axios
-      .get('http://localhost:5000/users') // MongoDB Atlas API URL
-      .then((response) => {
-        setData(response.data); // MongoDB থেকে ডেটা ফেচ
-      })
-      .catch((error) => {
-        console.error('There was an error fetching data!', error);
-      });
-  }, []);
+ 
 
   const handleNewRowChange = (field, value) => {
     setNewRow((prevState) => ({ ...prevState, [field]: value }));
@@ -51,7 +40,7 @@ const DataTablePage = () => {
 
   const handleAddNewRow = () => {
     handleAddRow(newRow); // Add new row to the state and MongoDB
-    setNewRow({ id: data.length + 1, name: '', age: '', dob: '', gender: 'Male' });
+    setNewRow({ name: '', age: '', dob: '', gender: 'Male' });
     setIsFormVisible(false);
   };
 
