@@ -21,27 +21,7 @@ Add New Row: Create new items by filling out the form and clicking the "Add" but
 Delete Row: Delete an item from the list.
 Save Changes: Save any edits made to the fields.
 Files
-1. data.json
-Initial data is stored in a JSON file. This file contains an array of objects representing the rows in the table.
-
-json
-
-[
-  {
-    "id": 1,
-    "name": "John Doe",
-    "age": 30,
-    "dob": "1995-05-15",
-    "gender": "Male"
-  },
-  {
-    "id": 2,
-    "name": "Jane Smith",
-    "age": 25,
-    "dob": "2000-03-22",
-    "gender": "Female"
-  }
-]
+1. 
 2. TableWithPagination.js
 This file contains the main logic for the table, including data management, pagination, and handling of edit, delete, and save actions.
 
@@ -85,19 +65,31 @@ Responsive: The app supports responsive design for better accessibility on diffe
 Setup Instructions
 Clone the Repository:
 
-git clone https://github.com/amandiu/Table-Management.git
-cd your-repository-name
+git clone https://github.com/amandiu/Table-Management_Interview.git
+
+Server Setup:
+Create a Database in mongoDB
+cd Server
+create a file named .env and add veriable DATABASE_URL='database connection string'
+
 Install Dependencies:
 
 npm install
+npx prisma generate
+npx prisma db push
 
 Run the Application:
 
-npm start
-This will start the development server, and you can view the app by opening http://localhost:3000 in your browser.
+npm start or npm run dev
+
+Client Setup:
+cd Cient
+npm install
+npm run dev
+This will start the development server, and you can view the app by opening http://localhost:5173 in your browser.
 
 Technologies Used
-React: JavaScript library for building user interfaces.
+React: JavaScript library for building user interfaces,Node JS, Prisma, MongoDB.
 Tailwind CSS: Utility-first CSS framework for styling.
 License
 This project is licensed under the MIT License - see the LICENSE file for details.
