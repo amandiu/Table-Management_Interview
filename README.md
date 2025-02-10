@@ -1,34 +1,44 @@
-# React + Vite
+# React Table with Pagination and Editable Fields
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
+This project is a simple React application that displays a table with pagination and editable fields. The table consists of five fields: **Name, Age, Date of Birth, Gender, and Actions (Edit, Delete, Save)**. 
 
-Currently, two official plugins are available:
+### Features:
+- **Pagination**: Display data in pages with the ability to change the number of rows per page.
+- **Editable Fields**: Click on "Edit" to modify the fields (Name, Age, Date of Birth, Gender).
+- **Add New Row**: Create new items by filling out the form and clicking the "Add" button.
+- **Delete Row**: Remove an item from the list.
+- **Save Changes**: Persist any edits made to the fields.
+- **Responsive Design**: Works seamlessly across different screen sizes.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
+## 📂 Project Structure
 
+```
+Table-Management_Interview/
+│── Client/
+│   ├── src/
+│   │   ├── Components/
+│   │   │   
+│   │   ├── Table/
+│   │   │   
+│   │   ├
+│── Server/
+│   ├── prisma/
+│   ├── server.js
+│── .env
+│── package.json
+│── README.md
+```
 
-
-
-React Table with Pagination and Editable Fields
-Overview
-This project is a simple React application that displays a table with pagination and editable fields. The table consists of 5 fields: Name, Age, Date of Birth, Gender, and Actions (Edit, Delete, Save). The project supports the following features:
-
-Pagination: Display data in pages with the ability to change the number of rows per page.
-Editable Fields: Click on "Edit" to modify the fields (Name, Age, Date of Birth, Gender).
-Add New Row: Create new items by filling out the form and clicking the "Add" button.
-Delete Row: Delete an item from the list.
-Save Changes: Save any edits made to the fields.
-Files
-1. 
-2. TableWithPagination.js
+### 🔹 Main Files:
+#### `useTableWithPagination.js`
 This file contains the main logic for the table, including data management, pagination, and handling of edit, delete, and save actions.
 
-js
-
+```javascript
 import { useState } from "react";
-import initialData from "./data.json";  // Importing JSON data
+import initialData from "../data.json";  // Importing JSON data
 
 const useTableWithPagination = () => {
   const [data, setData] = useState(initialData);
@@ -38,14 +48,16 @@ const useTableWithPagination = () => {
 
   // Logic for pagination, edit, delete, and save actions
 };
+
 export default useTableWithPagination;
-3. TableWithPagination.jsx
+```
+
+#### `TableWithPagination.jsx`
 This is the UI component that displays the table and manages interactions. It renders the table, handles form inputs, and triggers actions like editing, deleting, and saving.
 
-jsx
-
+```jsx
 import React from "react";
-import useTableWithPagination from "./TableWithPagination";
+import useTableWithPagination from "../hooks/useTableWithPagination";
 
 const TableWithPagination = () => {
   // Data and methods imported from the custom hook
@@ -57,49 +69,75 @@ const TableWithPagination = () => {
 };
 
 export default TableWithPagination;
-Features
-Editable Fields: Users can edit the Name, Age, Date of Birth, and Gender directly within the table.
-Pagination: You can navigate through different pages with a configurable number of rows per page.
-Dynamic Actions: The actions for each row are dynamic, showing "Edit", "Delete", or "Save" based on the state of the row.
-Responsive: The app supports responsive design for better accessibility on different screen sizes.
-Setup Instructions
-Clone the Repository:
+```
 
+---
+
+## 🚀 Setup Instructions
+
+### 1️⃣ Clone the Repository:
+```bash
 git clone https://github.com/amandiu/Table-Management_Interview.git
+```
 
-Server Setup:
-Create a Database in mongoDB
-cd Server
-create a file named .env and add veriable DATABASE_URL='database connection string'
+### 2️⃣ Server Setup:
+- **Create a MongoDB Database**.
+- **Configure environment variables**:
+  ```bash
+  cd Server
+  touch .env
+  ```
+  Add the following variable in `.env` file:
+  ```env
+  DATABASE_URL='your-mongodb-connection-string'
+  ```
+- **Install dependencies** and set up Prisma:
+  ```bash
+  npm install
+  npx prisma generate
+  npx prisma db push
+  ```
+- **Run the server**:
+  ```bash
+  npm start
+  ```
 
-Install Dependencies:
-
-npm install
-npx prisma generate
-npx prisma db push
-
-Run the Application:
-
-npm start or npm run dev
-
-Client Setup:
-cd Cient
+### 3️⃣ Client Setup:
+```bash
+cd Client
 npm install
 npm run dev
-This will start the development server, and you can view the app by opening http://localhost:5173 in your browser.
+```
 
-Technologies Used
-React: JavaScript library for building user interfaces,Node JS, Prisma, MongoDB.
-Tailwind CSS: Utility-first CSS framework for styling.
-License
-This project is licensed under the MIT License - see the LICENSE file for details.
+Once the setup is complete, open your browser and go to:
+```
+http://localhost:5173
+```
 
-How to Use:
-Copy the above content into a new README.md file.
-Commit the file to your GitHub repository:
-git add README.md
-git commit -m "Add project documentation"
-git push origin main
-This will ensure your project is properly documented, and it can be easily understood by others when they visit your GitHub repository.
+---
 
-Let me know if you need further adjustments!
+## 🛠️ Technologies Used
+- **React** – JavaScript library for building user interfaces.
+- **Vite** – A fast development server for modern web applications.
+- **Tailwind CSS** – Utility-first CSS framework for styling.
+- **MongoDB** – NoSQL database for storing data.
+- **Node.js** – JavaScript runtime for backend development.
+- **Prisma** – ORM for interacting with the database.
+
+---
+
+## 📜 License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 📌 How to Contribute
+1. **Fork** the repository.
+2. **Create** a new branch (`git checkout -b feature-branch`).
+3. **Commit** your changes (`git commit -m 'Add some feature'`).
+4. **Push** to the branch (`git push origin feature-branch`).
+5. **Open a Pull Request**.
+
+---
+
+🚀 Happy Coding! 🎉
